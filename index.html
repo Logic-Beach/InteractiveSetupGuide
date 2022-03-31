@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Review Carousel</title>
+
+	<style>
+		.review {
+			background: #f5f7f9;
+			max-width: 735px;
+			min-width: 735px;
+			min-height: 400px;
+			border: 1px solid #969696;
+			margin: auto;
+		}
+		
+			.review__items {
+				display: flex;
+				padding: 20px;
+			}
+			.image{
+				float: left;
+				width: 50%;
+				height: 300px;
+			}
+
+			.text{
+				float: right;
+				height: 300px;
+			}
+
+			.review__items img {
+				height: 250px;
+				width: 250px;
+
+			}
+			
+			.review__items h1 {
+				font-family: Roboto, sans-serif;
+				font-size: 20px;
+
+			}
+			
+			.review__items p {
+				font-family: Roboto, sans-serif;
+				font-size: 14px;
+			}
+			
+
+
+			.left__button {
+				float: left;
+				size: 16px;
+				padding: 10px;
+			}
+			.left__button button {
+				color: Black;
+				background: #fff;
+				font-weight: bold;
+				border-width: 1px;
+				border-color: rgba(0,0,0,0.12);
+				border-radius: 4px;
+				border-style: solid;
+				width: 20em;
+				padding: 16px;
+				box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 2px;
+			}
+			.left__button svg {
+				  width: 25px;
+ 				 height: 25px;
+			}
+
+			.left__button button:hover {
+				color: rgb(56,132,255);
+				border-color: rgb(56,132,255);
+				outline: none;
+			}
+
+
+
+			.right__button {
+				float: right;
+				size: 16px;
+				padding: 10px;
+			}
+
+			.right__button button {
+				color: Black;
+				background: #fff;
+				font-weight: bold;
+				border-width: 1px;
+				border-color: rgba(0,0,0,0.12);
+				border-radius: 4px;
+				border-style: solid;
+				width: 20em;
+				padding: 16px;
+				box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 2px;
+			}
+
+			.right__button button:hover {
+				color: rgb(56,132,255);
+				border-color: rgb(56,132,255);
+				outline: none;
+			}
+
+			.right__button svg {
+				  width: 25px;
+ 				 height: 25px;
+			}
+
+
+
+		.review__items {
+			display: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="review">
+		<div class="review__items">
+			<div class='image'>
+				<img src='images/grid+.png'>
+			</div>
+			<div class='text'>
+				<h1>Welcome to your GridPlus Lattice1!</h1>
+				<p>
+					Let's get your new Hardware wallet set up.
+				</p>
+			</div>
+		</div>
+
+
+		<div class="left__button">
+			<button id="prev" onclick="previousReview()">
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" preserveAspectRatio="xMidYMid meet" data-rnw-int-class="nearest__263-1719__" class="r-1rasi3h r-1472mwg r-lrsllp" style="vertical-align: middle;">
+				<path d="M19 12H5M12 19l-7-7 7-7"></path>
+	   			</svg>
+	   			Previous
+			</button>
+		</div>
+		<div class="right__button">
+			<button id="next" onclick="nextReview()">
+				Next
+				<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" preserveAspectRatio="xMidYMid meet" data-rnw-int-class="nearest__263-1719__" class="r-1rasi3h r-1472mwg r-lrsllp" style="vertical-align: middle;">
+				<path d="M5 12h14M12 5l7 7-7 7"></path>
+	   			</svg>
+			</button>
+		</div>
+	</div>
+
+	<script>
+		let rev = 0;
+		carousel(rev);
+
+		function previousReview() {
+			rev = rev - 1;
+			carousel(rev);
+		}
+
+		function nextReview() {
+			rev = rev + 1;
+			carousel(rev);
+		}
+
+		function carousel(review) {
+			let reviews = document
+				.getElementsByClassName("review__items");
+
+			if (review >= reviews.length) {
+				review = 0;
+				rev = 0;
+			}
+			if (review < 0) {
+				review = reviews.length - 1;
+				rev = reviews.length - 1;
+			}
+			for (let i = 0; i < reviews.length; i++) {
+				reviews[i].style.display = "none";
+			}
+			reviews[review].style.display = "block";
+		}
+	</script>
+</body>
+
+</html>
