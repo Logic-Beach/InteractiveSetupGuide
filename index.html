@@ -6,12 +6,13 @@
 
 	<style>
 		.review {
-			background: #f5f7f9;
+			background: #FFFFFF;
 			max-width: 735px;
 			min-width: 735px;
 			min-height: 400px;
-			border: 1px solid #969696;
+			#border: 1px solid rgba(150,150,150,0.3);
 			margin: auto;
+			#border-radius: 4px;
 		}
 		
 			.review__items {
@@ -25,8 +26,10 @@
 			}
 
 			.text{
+				align-content: left;
 				float: right;
 				height: 300px;
+				width: 50%;
 			}
 
 			.review__items img {
@@ -61,7 +64,7 @@
 				border-color: rgba(0,0,0,0.12);
 				border-radius: 4px;
 				border-style: solid;
-				width: 20em;
+				width: 25em;
 				padding: 16px;
 				box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 2px;
 			}
@@ -92,7 +95,7 @@
 				border-color: rgba(0,0,0,0.12);
 				border-radius: 4px;
 				border-style: solid;
-				width: 20em;
+				width: 25em;
 				padding: 16px;
 				box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 2px;
 			}
@@ -117,6 +120,7 @@
 </head>
 
 <body>
+<!-- 1 -->
 	<div class="review">
 		<div class="review__items">
 			<div class='image'>
@@ -129,6 +133,79 @@
 				</p>
 			</div>
 		</div>
+
+
+
+<!-- 2 -->
+		<div class="review__items">
+			<div class='image'>
+				<img src='images/grid+.png'>
+			</div>
+			<div class='text'>
+				<h1>2nd Page</h1>
+				<p>
+					Further stuff. to read about
+					<button id="decision" onclick="carousel(5-1),undecision(2-1)">
+						Want to go to page 5?
+					</button>
+					<button id="decision" onclick="carousel(4-1),undecision(2-1)">
+						or to page 4?
+					</button>
+				</p>
+			</div>
+		</div>
+
+
+
+<!-- 3 -->
+		<div class="review__items">
+			<div class='image'>
+				<img src='images/grid+.png'>
+			</div>
+			<div class='text'>
+				<h1>3rd Page</h1>
+				<p>
+					Further stuff. to read about
+				</p>
+			</div>
+		</div>
+
+
+
+
+<!-- 4 -->
+		<div class="review__items">
+			<div class='image'>
+				<img src='images/grid+.png'>
+			</div>
+			<div class='text'>
+				<h1>4th Page</h1>
+				<p>
+					Further stuff. to read about
+				</p>
+			</div>
+		</div>
+
+
+
+
+<!-- 5 -->
+		<div class="review__items">
+			<div class='image'>
+				<img src='images/grid+.png'>
+			</div>
+			<div class='text'>
+				<h1>5th Page</h1>
+				<p>
+					Further stuff. to read about
+				</p>
+			</div>
+		</div>
+
+
+
+
+
 
 
 		<div class="left__button">
@@ -152,6 +229,11 @@
 	<script>
 		let rev = 0;
 		carousel(rev);
+		let pastPage = 0;
+
+		function undecision(pastPage){
+			rev = pastPage + 1;
+		}
 
 		function previousReview() {
 			rev = rev - 1;
@@ -179,6 +261,7 @@
 				reviews[i].style.display = "none";
 			}
 			reviews[review].style.display = "block";
+			rev=review;
 		}
 	</script>
 </body>
