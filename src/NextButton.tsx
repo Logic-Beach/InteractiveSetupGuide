@@ -1,9 +1,9 @@
 import { SlideButton } from "./SlideButton";
 import { Slide } from "./slides";
 
-export const NextButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
+export const NextButton: React.FC<{ onClick: () => void }> = ({ ...args }) => {
   return (
-    <SlideButton onClick={onClick}>
+    <SlideButton {...args}>
       <svg
         viewBox="0 0 24 24"
         fill="none"

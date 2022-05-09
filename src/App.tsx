@@ -7,60 +7,81 @@ import { slideData } from "./slides";
 
 function App() {
   const [currentSlideId, setCurrentSlideId] = useState(0);
+  const [direction, setDirection] = useState("fadeLeftFadeRight");
+
+  const updateSlideId = async (newSlideId: number) => {
+    setDirection(
+      currentSlideId <= newSlideId ? "fadeLeftFadeRight" : "fadeRightFadeLeft"
+    );
+    await setTimeout(() => {}, 1);
+    setCurrentSlideId(newSlideId);
+  };
+
   const slide = slideData[currentSlideId];
-  const Buttons = slide.buttons
-    ? slide.buttons(slide, setCurrentSlideId)
-    : null;
-  const backSlideId = slide.back ? slide.back : slide.id - 1;
-  const onBack = () => setCurrentSlideId(backSlideId);
+
   const nextSlideId = slide.back ? slide.back : slide.id + 1;
-  const onNext = () => setCurrentSlideId(nextSlideId);
+  const onNext = async () => {
+    updateSlideId(nextSlideId);
+  };
+
+  const backSlideId = slide.back ? slide.back : slide.id - 1;
+  const onBack = async () => {
+    updateSlideId(backSlideId);
+  };
+
   const hasContent = !!slide.content;
+  const Buttons = slide.buttons ? (
+    slide.buttons(slide, updateSlideId)
+  ) : (
+    <>
+      <BackButton onClick={onBack} />
+      <NextButton onClick={onNext} />
+    </>
+  );
 
   return (
     <div
       style={{
-        height: "100vh",
-        width: "100vw",
-        display: "flex",
-        flexDirection: "column",
-        placeContent: "space-between",
-        alignItems: "space-evenly",
+        position: "absolute",
+        height: "89%",
+        width: "100%",
+        margin: "25px",
       }}
     >
       {/* @ts-ignore */}
-      <PageTransition preset="moveToLeftFromRight" transitionKey={slide.id.toString()}>
-          <div>
-            <h1 style={{ textAlign: "center" }}>{slide.title}</h1>
+      <PageTransition preset={direction} transitionKey={slide.id.toString()}>
+        <div
+          style={{
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            placeContent: "space-between",
+            alignItems: "space-evenly",
+          }}
+        >
+          <h1 style={{ textAlign: "center" }}>{slide.title}</h1>
+          <div
+            style={{
+              height: "100%",
+              display: "flex",
+              placeContent: "space-evenly",
+              alignItems: "center",
+            }}
+          >
             {hasContent ? (
               slide.content
             ) : (
               <>
-                <div
-                  style={{
-                    height: "100%",
-                    display: "flex",
-                    placeContent: "space-evenly",
-                    alignItems: "center",
-                  }}
-                >
-                  {slide.leftColumn}
-                  {slide.rightColumn}
-                </div>
+                {slide.leftColumn}
+                {slide.rightColumn}
               </>
             )}
           </div>
-        </PageTransition>
+        </div>
+      </PageTransition>
 
       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-        {Buttons ? (
-          Buttons
-        ) : (
-          <>
-            <BackButton onClick={onBack} />
-            <NextButton onClick={onNext} />
-          </>
-        )}
+        {Buttons}
       </div>
     </div>
   );

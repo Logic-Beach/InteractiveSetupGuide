@@ -2,6 +2,6 @@
 export const SlideButton: React.FC<{
   onClick: ()=>void
   children: React.ReactNode;
-}> = ({ onClick, children }) => {
-  return <button onClick={onClick}>{children}</button>;
+}> = ({ onClick, children, ...args }) => {
+  return <button onClick={onClick} {...args}>{children}</button>;
 };
