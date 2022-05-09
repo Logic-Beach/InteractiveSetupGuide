@@ -43,9 +43,8 @@ function App() {
     <div
       style={{
         position: "absolute",
-        height: "89%",
-        width: "100%",
-        margin: "25px",
+        height: "90%",
+        width: "100vw",
       }}
     >
       {/* @ts-ignore */}
@@ -57,6 +56,7 @@ function App() {
             flexDirection: "column",
             placeContent: "space-between",
             alignItems: "space-evenly",
+            margin: "5rem",
           }}
         >
           <h1 style={{ textAlign: "center" }}>{slide.title}</h1>

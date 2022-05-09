@@ -1,5 +1,4 @@
 import { SlideButton } from "./SlideButton";
-import { Slide } from "./slides";
 
 export const NextButton: React.FC<{ onClick: () => void }> = ({ ...args }) => {
   return (

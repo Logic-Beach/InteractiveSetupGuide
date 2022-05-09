@@ -1,6 +1,6 @@
 import { SlideButton } from "./SlideButton";
 
-export const BackButton: React.FC<{ onClick: () => void }> = ({ ...args }) => {
+export const BackButton: React.FC<{ onClick: () => void  }> = ({ ...args }) => {
   return (
     <SlideButton {...args}>
       <svg
