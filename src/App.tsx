@@ -2,24 +2,30 @@ import { PageTransition } from "@steveeeie/react-page-transition";
 import React, { useState } from "react";
 import "./App.css";
 import { BackButton } from "./BackButton";
+import { DEFAULT_BACK_TRANSITION, DEFAULT_NEXT_TRANSITION } from "./constants";
 import { NextButton } from "./NextButton";
 import { slideData } from "./slides";
 
 function App() {
   const [currentSlideId, setCurrentSlideId] = useState(0);
-  const [direction, setDirection] = useState("fadeLeftFadeRight");
+  const [transition, setTransition] = useState(DEFAULT_NEXT_TRANSITION);
+  const slide = slideData[currentSlideId];
 
   const updateSlideId = async (newSlideId: number) => {
-    setDirection(
-      currentSlideId <= newSlideId ? "fadeLeftFadeRight" : "fadeRightFadeLeft"
-    );
+    setTransition(getTransition(newSlideId));
     await setTimeout(() => {}, 1);
     setCurrentSlideId(newSlideId);
   };
 
-  const slide = slideData[currentSlideId];
+  const getTransition = (newSlideId: number): string => {
+    const isGoingForward = currentSlideId <= newSlideId;
+    if (slide.transition) {
+      return isGoingForward ? slide.transition.next : slide.transition.back;
+    }
+    return isGoingForward ? DEFAULT_NEXT_TRANSITION : DEFAULT_BACK_TRANSITION;
+  };
 
-  const nextSlideId = slide.back ? slide.back : slide.id + 1;
+  const nextSlideId = slide.next ? slide.next : slide.id + 1;
   const onNext = async () => {
     updateSlideId(nextSlideId);
   };
@@ -48,7 +54,7 @@ function App() {
       }}
     >
       {/* @ts-ignore */}
-      <PageTransition preset={direction} transitionKey={slide.id.toString()}>
+      <PageTransition preset={transition} transitionKey={slide.id.toString()}>
         <div
           style={{
             height: "100%",
