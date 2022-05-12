@@ -9,19 +9,22 @@ export type Slide = {
   buttons?: (slide: Slide, ...params: any) => ReactNode;
   content?: ReactNode;
   leftColumn?: ReactNode;
-  rightColumn?: ReactNode 
-} 
-
+  rightColumn?: ReactNode;
+  transition?: {
+    back: string,
+    next: string
+  }
+}
 
 export const slideData: Slide[] = [
   {
     id: 0,
     back: NaN,
     title: "Grid+ Lattice1 Setup Guide",
-    buttons: (slide: Slide, setCurrentSlideId: (x: number) => void) => (
+    buttons: (slide: Slide, goToSlide: (x: number) => void) => (
       <SlideButton
         onClick={() => {
-          setCurrentSlideId(slide.id + 1);
+          goToSlide(slide.id + 1);
         }}
       >
         Start
@@ -63,7 +66,6 @@ export const slideData: Slide[] = [
   {
     id: 3,
     title: "Plug your Lattice¹ in!",
-    
     content: (
       <>
         <div style={{ display: "flex" }}>
