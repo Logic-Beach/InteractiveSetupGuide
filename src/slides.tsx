@@ -1,6 +1,10 @@
 import React, { ReactNode } from "react";
 import { SlideButton } from "./SlideButton";
 
+const imgStyle = {
+  size: "50%",
+}
+
 export type Slide = {
   id: number;
   title?: string;
@@ -19,7 +23,12 @@ export type Slide = {
 export const slideData: Slide[] = [
   {
     id: 0,
+
     back: NaN,
+    transition: {
+      back:"",
+      next:""
+    },
     title: "Grid+ Lattice1 Setup Guide",
     buttons: (slide: Slide, goToSlide: (x: number) => void) => (
       <SlideButton
@@ -30,52 +39,79 @@ export const slideData: Slide[] = [
         Start
       </SlideButton>
     ),
-    content: (
-        <p>
-          You have just begun the journey to fully owning and protecting your
-          assets! We are here to help you as you learn the best, safest way to
-          make sure you are always in control.
-        </p>
-    ),
+    //leftColumn: <p style={{right: "100px"}}>Press Start</p> ,
+    content: <img src="/images/0 box-intro/splash.png" style={{}} />,
   },
+
   {
     id: 1,
+    transition: {
+      back:"",
+      next:""
+    },
     title: "Welcome to your new Grid+ Lattice¹",
-    leftColumn: <img src="/open-box.gif" alt="opening box" />,
-    rightColumn: <p>For the Sovereign Individual</p>,
+    content: (
+      <>
+        <img
+          src="/open-box.gif" 
+          alt="opening box" 
+          style={{width: "735px"}} 
+        />
+        <div id="fadeInText" style={{position:"absolute", right:"100px",
+                                    animation: "5s ease 0s normal forwards 1 fadein"}}>
+          For the Sovereign Individual
+       </div>
+      </>
+    )
+    
   },
+
+
   {
     id: 2,
     title: "Inside, you will find",
-    leftColumn: (
+    transition: {
+      back:"",
+      next:""
+    },
+    content: (
+      <>
       <img
-        src="/inside-box.gif"
-        alt="inside box"
-        style={{ height: "33%", width: "33%" }}
+        src="images/2 contents/video.gif"
+        style={{width: "735px"}}
       />
+      <div id="fadeInText" style={{position:"absolute", right:"100px"}}>
+        <ul>
+          <li>The Lattice¹ Device</li>
+          <li>A SafeCard</li>
+          <li>A power adapter</li>
+          <li>A LAN cable</li>
+        </ul>
+      </div>
+      </>
     ),
-    rightColumn: (
-      <ul>
-        <li>The Lattice¹ Device</li>
-        <li>A SafeCard</li>
-        <li>A power adapter</li>
-        <li>A LAN cable</li>
-      </ul>
-    ),
+
   },
+
+
+  
   {
     id: 3,
     title: "Plug your Lattice¹ in!",
     content: (
       <>
-        <div style={{ display: "flex" }}>
-          <ul>
-            <li>The Lattice¹ Device</li>
-            <li>A SafeCard</li>
-            <li>A power adapter</li>
-            <li>A LAN cable</li>
-          </ul>
-        </div>
+      <img
+        src="images/3 startup/video.gif"
+        style={{width: "735px"}}
+      />
+      <div id="fadeInText" style={{position:"absolute", left:"100px"}}>
+        <ul>
+          <li>The Lattice¹ Device</li>
+          <li>A SafeCard</li>
+          <li>A power adapter</li>
+          <li>A LAN cable</li>
+        </ul>
+      </div>
       </>
     ),
   },

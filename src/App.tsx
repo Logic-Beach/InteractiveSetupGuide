@@ -46,18 +46,19 @@ function App() {
   );
 
   return (
+    //Main DIV
     <div
       style={{
         position: "absolute",
-        height: "90%",
-        width: "100vw",
+        height: "480px",
+        width: "735px"
       }}
     >
       {/* @ts-ignore */}
       <PageTransition preset={transition} transitionKey={slide.id.toString()}>
         <div
           style={{
-            height: "100%",
+            height: "40%",
             display: "flex",
             flexDirection: "column",
             placeContent: "space-between",
@@ -72,6 +73,7 @@ function App() {
               display: "flex",
               placeContent: "space-evenly",
               alignItems: "center",
+
             }}
           >
             {hasContent ? (
