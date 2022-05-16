@@ -4,7 +4,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
+img{
+  align-content:right;
 }
 
 h1{
@@ -12,10 +15,15 @@ h1{
   top: -100px;
   padding:none;
   margin:none;
+  -webkit-animation: 0.5s ease 0s normal forwards 1 fadein;
+  animation: 0.5s ease 0s normal forwards 1 fadein;
+}
+
+backButton {
+  float:left
 }
 
 button {
-  float: left;
   size: 16px;
   padding: 10px;
   color: Black;
@@ -44,6 +52,11 @@ button svg {
 #fadeInText{
   -webkit-animation: 1s ease 0s normal forwards 1 fadein;
   animation: 1s ease 0s normal forwards 1 fadein;
+  width: 370px;
+  max-height: 400px;
+  overflow-y: auto;
+  word-wrap: break-word;
+
 }
 
 @keyframes fadein{
@@ -56,4 +69,91 @@ button svg {
   0% { opacity:0; }
   66% { opacity:0; }
   100% { opacity:1; }
+}
+
+#DIV_1 {
+  align-items: stretch;
+  block-size: 0px;
+  border-block-end-style: solid;
+  border-block-start-style: solid;
+  border-inline-end-style: solid;
+  border-inline-start-style: solid;
+  display: inline;
+  height: auto;
+  position: relative;
+  right: 0px;
+  text-rendering: optimizelegibility;
+  text-size-adjust: 100%;
+  top: 0px;
+  user-select: none;
+  width: 317px;
+  z-index: 0;
+  border: 0px solid rgb(0, 0, 0);
+  font: 16px Times;
+  padding: 16px 0px;
+  transition: opacity 0.2s;
+}
+
+#DIV_2 {
+  display: flex;
+  /* ADJUST BOX HEIGHT in DIV declarations */
+  height: 75px;
+  white-space: pre-wrap;
+  width: 300px;
+  background: rgb(245, 247, 249) none repeat scroll 0% 0% / auto padding-box border-box;
+  border-top: 0px solid rgb(52, 109, 219);
+  border-right: 0px solid rgb(52, 109, 219);
+  border-bottom: 0px solid rgb(52, 109, 219);
+  border-left: 4px solid rgb(52, 109, 219);
+  border-radius: 4px;
+  font: 16px sans-serif;
+  padding: 0px 20px 0px 0px;
+}
+
+#DIV_3 {
+  box-sizing: border-box;
+  display: flex;
+  height: auto;
+  justify-content: center;
+  width: 40px;
+  flex: 0 0 auto;
+  font: 16px sans-serif;
+  padding: 18px 0px 0px;
+}
+#svg_4 {
+  display: block;
+  vertical-align: middle;
+  width: 20px;
+}
+
+#path_5 {
+  d: path("M 8 1 A 7 7 0 1 0 8 15 A 7 7 0 0 0 8 1 Z M 0 8 A 8 8 0 1 1 16 8 A 8 8 0 0 1 0 8 Z");
+  fill: rgb(52, 109, 219);
+  fill-rule: evenodd;
+
+  border: 0px none rgb(52, 109, 219);
+  font: 16px Times;
+  outline: rgb(52, 109, 219) none 0px;
+}
+
+#path_6 {
+  
+  d: path("M 6.5 6.37 H 8 A 0.5 0.5 0 0 1 8.5 6.87 V 12.37 H 7.5 V 7.37 H 6.5 V 6.37 Z");
+  fill: rgb(52, 109, 219);
+  fill-rule: evenodd;
+}
+
+#path_7 {
+  d: path("M 9.5 12.37 H 6.5 V 11.37 H 9.5 V 12.37 Z");
+  fill: rgb(52, 109, 219);
+  fill-rule: evenodd;
+}
+
+#path_8 {
+  d: path("M 7.74 5.16 A 0.77 0.77 0 0 1 6.98 4.39 A 0.76 0.76 0 0 1 8.5 4.39 A 0.77 0.77 0 0 1 7.74 5.16 Z");
+  fill: rgb(52, 109, 219);  
+}
+
+#DIV_9{
+  font-family: roboto;
 }

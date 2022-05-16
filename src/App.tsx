@@ -1,4 +1,5 @@
 import { PageTransition } from "@steveeeie/react-page-transition";
+import { wrap } from "module";
 import React, { useState } from "react";
 import "./App.css";
 import { BackButton } from "./BackButton";
@@ -64,16 +65,24 @@ function App() {
             placeContent: "space-between",
             alignItems: "space-evenly",
             margin: "5rem",
+
           }}
         >
-          <h1 style={{ textAlign: "center" }}>{slide.title}</h1>
+          <h1 
+            style={{ 
+              textAlign: "center", 
+              zIndex:"99", 
+            }}
+          >
+            {slide.title}
+          </h1>
           <div
             style={{
               height: "100%",
               display: "flex",
               placeContent: "space-evenly",
               alignItems: "center",
-
+              wordBreak:"break-word"
             }}
           >
             {hasContent ? (
@@ -88,7 +97,7 @@ function App() {
         </div>
       </PageTransition>
 
-      <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+      <div style={{ display: "flex", justifyContent: "space-evenly"}}>
         {Buttons}
       </div>
     </div>
